@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--android:background="@mipmap/bg_list"-->
+
+    <RadioGroup
+        android:id="@+id/rg_groupDetail"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginStart="@dimen/dp_24"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@id/ib_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.byd.vtdr.widget.ThemeLightRadioButton
+            android:id="@+id/rb_recordvideo"
+            style="@style/RadioButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/btn_tab_recordvideo_selector"
+            android:text="@string/record_video"
+            android:textSize="@dimen/sp_10" />
+
+        <com.byd.vtdr.widget.ThemeLightRadioButton
+            android:id="@+id/rb_lockvideo"
+            style="@style/RadioButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/btn_tab_lockvideo_selector"
+            android:text="@string/lock_video"
+            android:textSize="@dimen/sp_10" />
+
+        <com.byd.vtdr.widget.ThemeLightRadioButton
+            android:id="@+id/rb_capturephoto"
+            style="@style/RadioButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/btn_tab_images_selector"
+            android:text="@string/photo"
+            android:textSize="@dimen/sp_10" />
+    </RadioGroup>
+
+    <ImageButton
+        android:id="@+id/ib_search"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_30"
+        android:background="@drawable/btn_search_selector"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/rg_groupDetail"
+        app:layout_constraintLeft_toRightOf="@+id/rg_groupDetail"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rg_groupDetail" />
+
+    <LinearLayout
+        android:id="@+id/ll_editItemBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/rg_groupDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rg_groupDetail">
+
+        <com.byd.vtdr.widget.LightTextView
+            android:id="@+id/tv_editNav"
+            style="@style/TextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/record_video"
+            android:textSize="@dimen/sp_9" />
+
+        <com.byd.vtdr.widget.ThemeLightButton
+            android:id="@+id/btn_cancel"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/btn_edit_cancel_selector"
+            android:gravity="start|center"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textSize="@dimen/sp_9" />
+
+        <com.byd.vtdr.widget.ThemeLightButton
+            android:id="@+id/btn_share"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/btn_edit_share_selector"
+            android:gravity="start|center"
+            android:text="@string/share"
+            android:textAllCaps="false"
+            android:textSize="@dimen/sp_9" />
+
+        <com.byd.vtdr.widget.ThemeLightButton
+            android:id="@+id/btn_export"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/btn_edit_export_selector"
+            android:gravity="start|center"
+            android:text="@string/export"
+            android:textAllCaps="false"
+            android:textSize="@dimen/sp_9" />
+
+        <com.byd.vtdr.widget.ThemeLightButton
+            android:id="@+id/btn_delete"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/btn_edit_delete_selector"
+            android:gravity="start|center"
+            android:text="@string/delete"
+            android:textAllCaps="false"
+            android:textSize="@dimen/sp_9" />
+
+        <com.byd.vtdr.widget.ThemeCheckBox
+            android:id="@+id/btn_selectall"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/btn_edit_selectall_selector"
+            android:text="@string/selectAll"
+            android:textAllCaps="false"
+            android:textSize="@dimen/sp_9" />
+        <!--android:gravity="start|center"-->
+
+    </LinearLayout>
+
+    <!--</RelativeLayout>-->
+    <!--&lt;!&ndacom.bydauto.myviewpager.viewview.NoScrollViewPager&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/vp_itemPreview"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="180dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:layout_constraintTop_toBottomOf="@+id/rg_groupDetail"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="#332">&ndash;&gt;-->
+    <!--&lt;!&ndascom.bydauto.myviewpager.viewview.NoScrollViewPager>&ndash;&gt;-->
+    <ImageView
+        android:id="@+id/iv_line_blowMenuEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:src="@mipmap/line_hor_tomenu"
+        app:layout_constraintBottom_toTopOf="@id/gv_dataList"
+        app:layout_constraintTop_toBottomOf="@id/ll_editItemBar" />
+
+    <!--android:layout_height="@dimen/dp_356"-->
+    <GridView
+        android:id="@+id/gv_dataList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/dp_70"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginStart="@dimen/dp_24"
+        android:fastScrollAlwaysVisible="true"
+        android:fastScrollEnabled="true"
+        android:horizontalSpacing="@dimen/dp_3"
+        android:numColumns="auto_fit"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbarThumbVertical="@drawable/myscrollbar"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/dp_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_line_blowMenuEdit">
+
+    </GridView>
+
+    <ProgressBar
+        android:id="@+id/listLoadingView"
+        style="@style/ProgressBarStyle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/gv_dataList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/fl_videoPlayPreview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/gv_dataList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+    <!--</LinearLayout>-->
+</android.support.constraint.ConstraintLayout>

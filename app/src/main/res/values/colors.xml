@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="blue">#1CC9FE</color>
+    <color name="white">#FFFFFF</color>
+    <color name="lightone">#7F00A2FF</color>
+    <color name="light">#1cc9ff</color>
+    <color name="normal_color">#ff13c7ff</color>
+    <color name="sport_color">#fb8218</color>
+    <color name="selector_press">#ff13c7ff</color>
+    <color name="service_item_confirm_color">#4d4d4d</color>
+</resources>

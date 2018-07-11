@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dp_20"
+    android:layout_marginStart="@dimen/dp_20"
+    >
+
+    <ImageView
+        android:id="@+id/iv_line_settingtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/line_settingtext"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_bg_settingtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/bg_settingtext"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_textSetting"
+        style="@style/TextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_40"
+        android:text="@string/setting"
+        android:textSize="@dimen/sp_10"
+        app:layout_constraintBottom_toBottomOf="@id/iv_bg_settingtext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_bg_settingtext" />
+
+    <com.byd.lighttextview.LightButton
+        android:id="@+id/btn_default_setting"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restore_defaults"
+        android:textAllCaps="false"
+        android:textSize="@dimen/sp_10"
+        android:visibility="gone"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_textSetting"
+        app:layout_constraintBottom_toBottomOf="@id/tv_textSetting"
+        app:layout_constraintLeft_toRightOf="@id/tv_textSetting"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_textSetting" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/line_settingtext"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_bg_settingtext" />
+
+    <com.byd.vtdr.widget.ThemeLightButton
+        android:id="@+id/btn_memoryCard_format"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:gravity="start|center"
+        android:text="@string/storageCard_format"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@id/tv_textSetting"
+        app:layout_constraintTop_toBottomOf="@id/tv_textSetting" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/line_settingpartdetail"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/btn_memoryCard_format" />
+
+    <TextView
+        android:id="@+id/tv_version"
+        style="@style/TextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/version"
+        android:textSize="@dimen/sp_10"
+        android:layout_marginTop="@dimen/dp_11"
+        app:layout_constraintStart_toStartOf="@id/tv_textSetting"
+        app:layout_constraintTop_toBottomOf="@id/btn_memoryCard_format" />
+
+    <TextView
+        android:id="@+id/tv_appVersionDetail"
+        style="@style/TextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_9"
+        android:layout_marginStart="@dimen/dp_5"
+        app:layout_constraintStart_toEndOf="@id/tv_textSetting"
+        app:layout_constraintBottom_toBottomOf="@id/tv_version"
+        app:layout_constraintTop_toTopOf="@id/tv_version" />
+
+    <com.byd.vtdr.widget.ThemeLightButton
+        android:id="@+id/btn_firmwareVersion"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start|center"
+        android:text="@string/firmware_version"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginStart="@dimen/dp_28"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@id/btn_memoryCard_format"
+        app:layout_constraintTop_toBottomOf="@id/tv_textSetting" />
+
+    <com.byd.vtdr.widget.ThemeLightButton
+        android:id="@+id/btn_appVersion"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start|center"
+        android:text="@string/app_version"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/tv_version"
+        app:layout_constraintTop_toBottomOf="@id/tv_version" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/line_settingpartdetail"
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/dp_12"
+        app:layout_constraintTop_toBottomOf="@id/tv_version" />
+
+    <com.byd.lighttextview.LightButton
+        android:id="@+id/update_test"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start|center"
+        android:text="@string/check_version"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/btn_appVersion"
+        app:layout_constraintTop_toTopOf="@id/btn_appVersion" />
+
+</android.support.constraint.ConstraintLayout>

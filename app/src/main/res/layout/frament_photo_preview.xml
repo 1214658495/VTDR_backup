@@ -1,0 +1,102 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@mipmap/bg_all_port_cut">
+
+    <com.byd.vtdr.view.MyViewPager
+        android:id="@+id/vp_viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.byd.vtdr.view.MyViewPager>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/vp_viewPager">
+
+        <LinearLayout
+            android:id="@+id/ll_bar_editPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@mipmap/bg_text_item"
+            android:gravity="right"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageButton
+                android:id="@+id/btn_share_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:background="@drawable/btn_preview_share_selector" />
+
+            <ImageButton
+                android:id="@+id/btn_export_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:background="@drawable/btn_preview_export_selector" />
+
+            <ImageButton
+                android:id="@+id/btn_delete_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:background="@drawable/btn_preview_delete_selector" />
+
+            <ImageButton
+                android:id="@+id/btn_zoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_5"
+                android:background="@drawable/btn_preview_zoomout_selector" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bar_showTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_text_item"
+        app:layout_constraintTop_toTopOf="@id/vp_viewPager">
+
+        <ImageButton
+            android:id="@+id/btn_back_to_gridview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_preview_back_selector" />
+
+        <TextView
+            style="@style/TextRobotoStyle"
+            android:id="@+id/tv_title_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/btn_back_to_gridview"
+            android:text="2017-09-90-09-09-09.jpg"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            style="@style/TextRobotoStyle"
+            android:id="@+id/tv_vpIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="11sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
+

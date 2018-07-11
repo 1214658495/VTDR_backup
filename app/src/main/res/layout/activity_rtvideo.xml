@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:context="com.byd.vtdr.ActivityRTVideo">
+
+    <SurfaceView
+        android:id="@+id/sv_videoPlayView_activity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/loadingView_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@mipmap/bg_loading" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bar_showVideoTitle_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_text_item"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back_to_videoGridview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_preview_back_selector" />
+
+        <TextView
+            android:id="@+id/tv_title_video_activity"
+            style="@style/TextRobotoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/btn_back_to_videoGridview"
+            android:text="2017-09-90-09-09-10.MP4"
+            android:textSize="@dimen/sp_10" />
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/btn_stop3_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_preview_stop_big_selector"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_start3_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_preview_play_big_selector"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_bar_editVideo_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_text_item"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/sv_videoPlayView_activity"
+        app:layout_constraintRight_toRightOf="@id/sv_videoPlayView_activity">
+
+        <SeekBar
+            android:id="@+id/sb_mediaCtrlBar_activity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:maxHeight="@dimen/dp_2"
+            android:splitTrack="false"
+            android:progressDrawable="@drawable/seekbar_bg"
+            android:thumb="@mipmap/ic_seekbar_thumb"
+            />
+
+        <TextView
+            android:id="@+id/tv_currentTime_activity"
+            style="@style/TextRobotoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            style="@style/TextRobotoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" / "
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:id="@+id/tv_endTime_activity"
+            style="@style/TextRobotoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="02:00"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:textSize="@dimen/sp_10"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/btn_preview_delete_selector" />
+
+        <ImageButton
+            android:id="@+id/btn_VideoZoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:background="@drawable/btn_preview_zoomin_selector" />
+
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ib_playVideo3_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_preview_play_big_selector"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

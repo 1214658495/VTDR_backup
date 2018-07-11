@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_all_port_cut"
+    android:clickable="true"
+    android:focusable="true">
+    <!--如上使用了黑色背景盖住了list
+    如下暂时使用17：9来盖住横屏的黑色区域，实际需要做fragments的替换-->
+    <SurfaceView
+        android:id="@+id/sv_videoPlayView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="17:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
+
+
+    <ProgressBar
+        android:id="@+id/loadingView"
+        style="@style/ProgressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/sv_videoPlayView"
+        app:layout_constraintEnd_toEndOf="@id/sv_videoPlayView"
+        app:layout_constraintStart_toStartOf="@id/sv_videoPlayView"
+        app:layout_constraintTop_toTopOf="@id/sv_videoPlayView" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bar_showVideoTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_text_item"
+        app:layout_constraintLeft_toLeftOf="@id/sv_videoPlayView"
+        app:layout_constraintRight_toRightOf="@id/sv_videoPlayView"
+        app:layout_constraintTop_toTopOf="@id/sv_videoPlayView">
+
+        <ImageButton
+            android:id="@+id/btn_back_to_videoGridview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_preview_back_selector" />
+
+        <TextView
+            android:id="@+id/tv_title_video"
+            style="@style/TextRobotoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/btn_back_to_videoGridview"
+            android:text="2017-09-90-09-09-10.MP4"
+            android:textSize="@dimen/sp_10" />
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_preview_stop_big_selector"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/sv_videoPlayView"
+        app:layout_constraintEnd_toEndOf="@id/sv_videoPlayView"
+        app:layout_constraintStart_toStartOf="@id/sv_videoPlayView"
+        app:layout_constraintTop_toTopOf="@id/sv_videoPlayView" />
+
+    <ImageButton
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_preview_play_big_selector"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/sv_videoPlayView"
+        app:layout_constraintEnd_toEndOf="@id/sv_videoPlayView"
+        app:layout_constraintStart_toStartOf="@id/sv_videoPlayView"
+        app:layout_constraintTop_toTopOf="@id/sv_videoPlayView" />
+
+    <LinearLayout
+        android:id="@+id/ll_bar_editVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_text_item"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/sv_videoPlayView"
+        app:layout_constraintLeft_toLeftOf="@id/sv_videoPlayView"
+        app:layout_constraintRight_toRightOf="@id/sv_videoPlayView">
+
+        <SeekBar
+            android:id="@+id/sb_mediaCtrlBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:maxHeight="@dimen/dp_2"
+            android:progressDrawable="@drawable/seekbar_bg"
+            android:splitTrack="false"
+            android:thumb="@mipmap/ic_seekbar_thumb" />
+
+
+        <TextView
+            android:id="@+id/tv_currentTime"
+            style="@style/TextRobotoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            style="@style/TextRobotoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" / "
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:id="@+id/tv_endTime"
+            style="@style/TextRobotoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:text="02:00"
+            android:textSize="@dimen/sp_10"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_preview_delete_selector"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/btn_VideoZoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:background="@drawable/btn_preview_zoomout_selector" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ib_playVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_preview_play_big_selector"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--<SeekBar-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@mipmap/bg_dialog">
+
+    <TextView
+        android:id="@+id/tv_dialogContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.35"
+        android:gravity="center"
+        android:text="@string/exit"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp_16" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/ll_line_choose"
+        android:src="@mipmap/line_below_content" />
+
+    <LinearLayout
+        android:id="@+id/ll_line_choose"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.85"
+        android:orientation="horizontal">
+
+        <com.byd.lighttextview.LightButton
+            android:id="@+id/btn_dialogSure"
+            style="@style/ButtonTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ok"
+            android:textSize="@dimen/sp_11"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/line_between_choose"
+            android:visibility="gone"/>
+
+        <com.byd.lighttextview.LightButton
+            android:id="@+id/btn_dialogCancel"
+            style="@style/ButtonTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:textSize="@dimen/sp_11"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

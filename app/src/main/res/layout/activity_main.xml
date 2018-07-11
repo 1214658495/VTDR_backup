@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_all_port"
+    tools:context="com.byd.vtdr.MainActivity">
+    <!--android:background="@mipmap/bg_all_port"-->
+    <!--android:background="@mipbg_all_port_ver"-->
+    <!--style="@style/ButtonStyle"-->
+    <!--android:drawableTop="@drawable/btn_tab_back_selector"-->
+
+    <com.byd.vtdr.widget.ThemeLightButton
+        android:id="@+id/btn_back"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@null"
+        android:drawableTop="@drawable/btn_tab_back_selector"
+        android:text="@string/back"
+        android:textAllCaps="false"
+        android:textSize="@dimen/sp_11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_6"
+        android:layout_marginTop="@dimen/dp_8"
+        android:src="@mipmap/line_ver_toback"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintLeft_toRightOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <RadioGroup
+        android:id="@+id/rg_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_25"
+        android:layout_marginStart="@dimen/dp_30"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintLeft_toRightOf="@id/btn_back"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_back">
+
+        <com.byd.vtdr.widget.ThemeLightRadioButton
+            android:id="@+id/rb_realTimeVideo"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/btn_tab_realtimevideo_selector"
+            android:gravity="center"
+            android:text="@string/live_video"
+            android:textSize="@dimen/sp_11" />
+
+        <com.byd.vtdr.widget.ThemeLightRadioButton
+            android:id="@+id/rb_playbackList"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/btn_tab_playbacklist_selector"
+            android:gravity="center"
+            android:text="@string/playback_list"
+            android:textSize="@dimen/sp_11" />
+
+        <com.byd.vtdr.widget.ThemeLightRadioButton
+            android:id="@+id/rb_setting"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/btn_tab_setting_selector"
+            android:gravity="center"
+            android:text="@string/setting"
+            android:textSize="@dimen/sp_11" />
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/iv_line_hor_tomenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_22"
+        android:src="@mipmap/line_port_bottommenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+    <!--<com.bydauto.myviewpager.view.NoScrollViewPager-->
+    <!--android:id="@+id/vp_main"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/dp_20"-->
+
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@id/iv_line_hor_tomenu">-->
+
+    <!--</com.bydauto.myviewpager.view.NoScrollViewPager>-->
+    <!--android:layout_marginStart="@dimen/dp_14"-->
+    <!--android:layout_marginEnd="@dimen/dp_14"-->
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_20"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_line_hor_tomenu">
+
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

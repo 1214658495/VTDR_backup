@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">VTDR</string>
+    <string name="back">Back</string>
+    <string name="live_video">Camera</string>
+    <string name="playback_list">Media List</string>
+    <string name="setting">Setting</string>
+
+    <string name="record_video">RecordVideo</string>
+    <string name="lock_video">VideoLock </string>
+    <string name="photo">Photo</string>
+
+    <string name="system">System</string>
+    <string name="storageCard_format">Storage Card Format</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="share">Share</string>
+    <string name="export">Export</string>
+    <string name="delete">Delete</string>
+    <string name="selectAll">All</string>
+
+    <string name="restore_defaults">Restore Defaults</string>
+    <string name="version">Version</string>
+    <string name="firmware_version">Firmware Version</string>
+    <string name="app_version">App Version</string>
+
+    <string name="Pictures_success">Pictures Success</string>
+    <string name="Pictures_fail">Pictures Fail</string>
+    <string name="LockVideo_start">LockVideo Start</string>
+    <string name="LockVideo_fail">LockVideo Fail</string>
+    <string name="openVideo_fail">OpenVideo Fail</string>
+    <string name="closeVideo_fail">CloseVideo Fail</string>
+    <string name="connect_fail">Car DVR Connecting Fail</string>
+    <string name="ok">OK</string>
+    <string name="close">Close</string>
+    <string name="logo_text">BYD Driving Recorder</string>
+    <string name="card_removed">Insert Card Please</string>
+    <string name="card_inserted">Storage Card Inserted</string>
+    <string name="reboot_drivingReorder">Reboot Driving Reorder</string>
+    <string name="format_finished">Format Finished</string>
+    <string name="format_fail">Format Fail,Confirm To Reformat?</string>
+    <string name="downloading">Exporting</string>
+    <string name="Download_completed">Exported To Local</string>
+    <string name="Download_fail">Export Fail</string>
+    <string name="File_downloaded">File Exported</string>
+    <string name="open_permissions">Please Open The App\'s Storage Permissions</string>
+    <string name="share_to">Share To</string>
+    <string name="video_cannot_share">Video Can\'t Be Shared Right Now!</string>
+    <string name="select_to_download">Please Select The File To Download</string>
+    <string name="confirm_delete">Delete The Selected Files?</string>
+    <string name="Reconnecting">Reconnecting...</string>
+    <string name="restore_settings">Confirm Restore The Default Settings?</string>
+    <string name="confirm_format_memory_card">Format Storage Card?</string>
+    <string name="time_out">Time Out Connected</string>
+    <string name="download_num">Export Num Maximum Of Nine</string>
+    <string name="download_num_tv">Export Num Maximum Of Five</string>
+    <string name="download_free_space">Download Space Less Than 1GB</string>
+    <string name="card_readying">Card Readying</string>
+    <string name="image_max">Picture Store Full</string>
+    <string name="card_issue">Card Issue</string>
+    <string name="card_write_protect">Card Write Protect</string>
+    <string name="card_not_enough">Card Not Enough</string>
+    <string name="card_need_format">Unformatted Storage Card</string>
+    <string name="sensor_issue">Video Signal Error</string>
+    <string name="video_locking">Video Locking</string>
+    <string name="immediately_format">Immediately Format</string>
+    <string name="later_format">Later Format</string>
+    <string name="card_need_format_detail">You Can Click [Setting] To Format</string>
+    <string name="reformat">Reformat</string>
+    <string name="check_version">Check New Version</string>
+    <string name="version_newest">Version Is Newest</string>
+    <string name="storage_card_formatting">Formatting</string>
+    <string name="delete_fail">Delete Fail</string>
+    <string name="delete_success">Delete Success</string>
+    <string name="open_voice">Open Voice</string>
+    <string name="close_voice">Close Voice</string>
+    <string name="voice_settingfail">Voice Setting Fail</string>
+    <string name="del_image_sure">Are You Sure Delete?</string>
+    <string name="invalid_token">Invalid Token</string>
+    <string name="select_file">Please Select First</string>
+    <string name="LockVideo_end">LockVideo End</string>
+    <string name="video_locking_format_later">Video Locking,Please Format Later</string>
+    <string name="export_address">File Export To Local-All-行车记录仪</string>
+    <string name="deleting">deleting</string>
+    <string name="get_firmware_version_fail">Get Firmware Version Fail</string>
+
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.byd.vtdr">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+    <!--<uses-permission android:name="android.permission.BYDAUTO_ENERGY_SET" />-->
+    <uses-permission android:name="android.permission.BYDAUTO_ENERGY_GET" />
+    <!--<uses-permission android:name="android.permission.BYDAUTO_BODYWORK_COMMON" />-->
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:resizeableActivity="false"
+        android:theme="@style/AppWelcome">
+        <activity android:name="com.byd.vtdr.MainActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.byd.vtdr.ActivityImagesViewPager"
+            android:configChanges="orientation|keyboard|layoutDirection|screenSize"/>
+        <activity android:name="com.byd.vtdr.ActivityRTVideo"
+            android:configChanges="orientation|keyboard|layoutDirection|screenSize" />
+        <activity android:name=".BaseActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.byd.vtdr.fileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>
