@@ -189,8 +189,8 @@ public class ActivityRTVideo extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        release();
-//        new MyTheard().start();
+//        release();
+        new MyTheard().start();
         AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
         audioManager.abandonAudioFocus(null);
         unbinder.unbind();

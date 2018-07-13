@@ -9,7 +9,6 @@ import android.os.Message;
 import com.byd.vtdr.widget.Theme;
 import com.byd.vtdr.widget.ThemeManager;
 import com.squareup.leakcanary.RefWatcher;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -67,7 +66,6 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CrashReport.initCrashReport(getApplicationContext(), "c7b49bac36", false);
         SkinCompatManager.withoutActivity(this)
 //                .addStrategy(new CustomSDCardLoader())          // 自定义加载策略，指定SDCard路径
 //                .addInflater(new SkinMaterialViewInflater())    // material design

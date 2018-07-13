@@ -464,11 +464,11 @@ public class FragmentVideoPreview extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        release();
-//        new MyTheard().start();
+//        release();
+        new MyTheard().start();
 
-            AudioManager audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
-            audioManager.abandonAudioFocus(null);
+        AudioManager audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+        audioManager.abandonAudioFocus(null);
 
     }
 
@@ -505,6 +505,7 @@ public class FragmentVideoPreview extends Fragment {
             }
         }
     }
+
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         lastTime = sbMediaCtrlBar.getProgress();
