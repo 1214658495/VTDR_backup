@@ -39,14 +39,10 @@ import com.byd.vtdr.utils.LogcatHelper;
 import com.byd.vtdr.view.CustomDialog;
 import com.byd.vtdr.view.MyDialog;
 import com.byd.vtdr.view.ProgressDialogFragment;
-import com.byd.vtdr.widget.Theme;
 import com.byd.vtdr.widget.ThemeLightButton;
 import com.byd.vtdr.widget.ThemeLightRadioButton;
 import com.byd.vtdr.widget.ThemeManager;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -132,22 +128,17 @@ public class MainActivity extends AppCompatActivity implements IChannelListener,
         LogcatHelper.getInstance(getApplicationContext()).start();
 //        requestWindowFeature();
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        initSkinView();
         myApplication = (MyApplication) this.getApplicationContext();
 
         requestPermission();
-//        checkUpdateThread();
-        ButterKnife.bind(this);
-
-        int mode = ThemeManager.getInstance().getTheme();
-        if (mode == Theme.SPORT) {
-//            //运动模式
-            showMainSkinTheme(Theme.SPORT);
-        } else {
-//            //经济模式
-            showMainSkinTheme(Theme.NORMAL);
-        }
-
         initConnect();
+    }
+
+    private void initSkinView() {
+        int bydTheme = getResources().getConfiguration().byd_theme;
+        changeSkin(bydTheme);
     }
 
     @Override
@@ -160,40 +151,17 @@ public class MainActivity extends AppCompatActivity implements IChannelListener,
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        int mode = ThemeManager.getInstance().getTheme();
-        if (mode == Theme.SPORT) {
-//            //运动模式
-            showMainSkinTheme(Theme.SPORT);
-        } else {
-//            //经济模式
-            showMainSkinTheme(Theme.NORMAL);
-        }
-        if (fragmentPlaybackList != null && fragment == fragmentPlaybackList) {
-//            后台换肤
-            fragmentPlaybackList.loadSkinTheme(mode);
-        }
-
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        int bydTheme = newConfig.byd_theme;
+        changeSkin(bydTheme);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(MessageEvent event) {
-        int mode = ThemeManager.getInstance().getTheme();
-        if (mode == Theme.SPORT) {
-//            //运动模式
-            showMainSkinTheme(Theme.SPORT);
-        } else {
-//            //经济模式
-            showMainSkinTheme(Theme.NORMAL);
-        }
-    }
 
     private void initConnect() {
         isNetworkConnected = true;
@@ -340,7 +308,6 @@ public class MainActivity extends AppCompatActivity implements IChannelListener,
     @Override
     protected void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -1718,11 +1685,9 @@ public class MainActivity extends AppCompatActivity implements IChannelListener,
         }
     }*/
 
-
-    private void showMainSkinTheme(int theme) {
-        if (theme == Theme.NORMAL) {
-//            themeManager.updateTheme(Theme.NORMAL);
-//            SkinCompatManager.getInstance().restoreDefaultTheme();
+    private void changeSkin(int bydTheme) {
+        if (bydTheme == 1) {
+            //经济模式
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 btnBack.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
                         getResources().getDrawable(R.drawable.btn_tab_back_selector), null, null);
@@ -1742,9 +1707,8 @@ public class MainActivity extends AppCompatActivity implements IChannelListener,
                 rbSetting.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_setting_selector),
                         null, null, null);
             }
-        } else if (theme == Theme.SPORT) {
-//            themeManager.updateTheme(Theme.SPORT);
-//            SkinCompatManager.getInstance().loadSkin("sport", null, SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
+        } else if (bydTheme == 2) {
+            //运动模式
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 btnBack.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
                         getResources().getDrawable(R.drawable.btn_tab_back_selector_sport), null, null);
@@ -1762,6 +1726,48 @@ public class MainActivity extends AppCompatActivity implements IChannelListener,
                 rbPlaybackList.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_playbacklist_selector_sport),
                         null, null, null);
                 rbSetting.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_setting_selector_sport),
+                        null, null, null);
+            }
+        } else if (bydTheme == 101) {
+            //hadeco模式
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                btnBack.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
+                        getResources().getDrawable(R.drawable.btn_tab_back_selector_hadeco), null, null);
+                rbRealTimeVideo.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
+                        getResources().getDrawable(R.drawable.btn_tab_realtimevideo_selector_hadeco), null, null);
+                rbPlaybackList.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
+                        getResources().getDrawable(R.drawable.btn_tab_playbacklist_selector_hadeco), null, null);
+                rbSetting.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
+                        getResources().getDrawable(R.drawable.btn_tab_setting_selector_hadeco), null, null);
+            } else {
+                btnBack.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_back_selector_hadeco),
+                        null, null, null);
+                rbRealTimeVideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_realtimevideo_selector_hadeco),
+                        null, null, null);
+                rbPlaybackList.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_playbacklist_selector_hadeco),
+                        null, null, null);
+                rbSetting.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_setting_selector_hadeco),
+                        null, null, null);
+            }
+        } else if (bydTheme == 102) {
+            //had运动模式
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                btnBack.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
+                        getResources().getDrawable(R.drawable.btn_tab_back_selector_hadsport), null, null);
+                rbRealTimeVideo.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
+                        getResources().getDrawable(R.drawable.btn_tab_realtimevideo_selector_hadsport), null, null);
+                rbPlaybackList.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
+                        getResources().getDrawable(R.drawable.btn_tab_playbacklist_selector_hadsport), null, null);
+                rbSetting.setCompoundDrawablesRelativeWithIntrinsicBounds(null,
+                        getResources().getDrawable(R.drawable.btn_tab_setting_selector_hadsport), null, null);
+            } else {
+                btnBack.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_back_selector_hadsport),
+                        null, null, null);
+                rbRealTimeVideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_realtimevideo_selector_hadsport),
+                        null, null, null);
+                rbPlaybackList.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_playbacklist_selector_hadsport),
+                        null, null, null);
+                rbSetting.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_setting_selector_hadsport),
                         null, null, null);
             }
         }

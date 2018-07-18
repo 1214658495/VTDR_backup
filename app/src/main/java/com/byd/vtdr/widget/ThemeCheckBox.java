@@ -33,14 +33,23 @@ public class ThemeCheckBox extends android.support.v7.widget.AppCompatCheckBox i
 			setButtonDrawable(drawable);
 		}*/
 		switch (theme) {
-		case Theme.SPORT:
+			case Theme.SPORT:
 //			setButtonDrawable(getResources().getDrawable(R.drawable.selector_file_sort));
-			setTextColor(getResources().getColor(R.color.sport_color));
-			break;
-		default:
+				setTextColor(getResources().getColor(R.color.sport_color));
+				break;
+			case Theme.HAD_NORMAL:
+//			setButtonDrawable(getResources().getDrawable(R.drawable.selector_file_sort));
+				setTextColor(getResources().getColor(R.color.grey));
+				break;
+			case Theme.HAD_SPORT:
+//			setButtonDrawable(getResources().getDrawable(R.drawable.selector_file_sort));
+//				setTextColor(getResources().getColor(R.color.hadsport_color));
+				setTextColor(getResources().getColor(R.color.grey));
+				break;
+			default:
 //			setButtonDrawable(getResources().getDrawable(R.drawable.pic_check_box_up));
-			setTextColor(getResources().getColor(R.color.light));
-			break;
+				setTextColor(getResources().getColor(R.color.light));
+				break;
 		}
 	}
 

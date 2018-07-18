@@ -6,8 +6,8 @@ android {
         applicationId "com.byd.vtdr"
         minSdkVersion 22
         targetSdkVersion 27
-        versionCode 20
-        versionName "1.0.20"
+        versionCode 21
+        versionName "1.0.21"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         archivesBaseName = "vtdr" + versionName
         ndk {
@@ -24,7 +24,7 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = ['src/main/res', 'src/main/res-sport']
+            res.srcDirs = ['src/main/res', 'src/main/res-sport', 'src/main/res-hadeco', 'src/main/res-hadsport']
         }
     }
 }

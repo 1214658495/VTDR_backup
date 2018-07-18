@@ -45,7 +45,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.byd.vtdr.MainActivity;
-import com.byd.vtdr.MessageEvent;
 import com.byd.vtdr.Model;
 import com.byd.vtdr.MyApplication;
 import com.byd.vtdr.R;
@@ -57,16 +56,11 @@ import com.byd.vtdr.utils.DownloadUtil;
 import com.byd.vtdr.view.MyDialog;
 import com.byd.vtdr.view.ProgressDialogFragment;
 import com.byd.vtdr.widget.LightTextView;
-import com.byd.vtdr.widget.Theme;
 import com.byd.vtdr.widget.ThemeCheckBox;
 import com.byd.vtdr.widget.ThemeLightButton;
 import com.byd.vtdr.widget.ThemeLightRadioButton;
-import com.byd.vtdr.widget.ThemeManager;
 import com.jakewharton.disklrucache.DiskLruCache;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -216,7 +210,7 @@ public class FragmentPlaybackList extends Fragment implements AdapterView.OnItem
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
 
      /*   int mode = ThemeManager.getInstance().getTheme();
         if (mode == Theme.SPORT) {
@@ -237,14 +231,8 @@ public class FragmentPlaybackList extends Fragment implements AdapterView.OnItem
         listLoadingView = view.findViewById(R.id.listLoadingView);
         unbinder = ButterKnife.bind(this, view);
 
-        int mode = ThemeManager.getInstance().getTheme();
-        if (mode == Theme.SPORT) {
-//            //运动模式
-            loadSkinTheme(Theme.SPORT);
-        } else {
-//            //经济模式
-            loadSkinTheme(Theme.NORMAL);
-        }
+        int bydTheme = getResources().getConfiguration().byd_theme;
+        changeSkin(bydTheme);
 
         initData();
 //        if (resush == null) {
@@ -260,58 +248,11 @@ public class FragmentPlaybackList extends Fragment implements AdapterView.OnItem
 
     }
 
-    public void loadSkinTheme(int theme) {
-        if (theme == Theme.NORMAL) {
-            rbRecordvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_recordvideo_selector),
-                    null, null, null);
-            rbLockvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_lockvideo_selector),
-                    null, null, null);
-            rbCapturephoto.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_images_selector),
-                    null, null, null);
-            btnCancel.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_cancel_selector),
-                    null, null, null);
-            btnExport.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_export_selector),
-                    null, null, null);
-            btnDelete.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_delete_selector),
-                    null, null, null);
-            btnShare.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_share_selector),
-                    null, null, null);
-            btnSelectall.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_selectall_selector),
-                    null, null, null);
-            tvEditNav.setLight(getResources().getColor(R.color.lightone), 22);
-
-
-        } else if (theme == Theme.SPORT) {
-            rbRecordvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_recordvideo_selector_sport),
-                    null, null, null);
-            rbLockvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_lockvideo_selector_sport),
-                    null, null, null);
-            rbCapturephoto.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_tab_images_selector_sport),
-                    null, null, null);
-            btnCancel.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_cancel_selector_sport),
-                    null, null, null);
-            btnExport.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_export_selector_sport),
-                    null, null, null);
-            btnDelete.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_delete_selector_sport),
-                    null, null, null);
-            btnShare.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_share_selector_sport),
-                    null, null, null);
-            btnSelectall.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_selectall_selector_sport),
-                    null, null, null);
-            tvEditNav.setLight(getResources().getColor(R.color.sport_color), 22);
-        }
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(MessageEvent event) {
-        int mode = ThemeManager.getInstance().getTheme();
-        if (mode == Theme.SPORT) {
-//            //运动模式
-            loadSkinTheme(Theme.SPORT);
-        } else {
-//            //经济模式
-            loadSkinTheme(Theme.NORMAL);
-        }
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        int bydTheme = newConfig.byd_theme;
+        changeSkin(bydTheme);
     }
 
     private void initData() {
@@ -581,7 +522,7 @@ public class FragmentPlaybackList extends Fragment implements AdapterView.OnItem
     public void onStop() {
         Log.e(TAG, "onStop: ");
         super.onStop();
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
         cancelMultiChoose();
     }
 
@@ -1034,12 +975,22 @@ public class FragmentPlaybackList extends Fragment implements AdapterView.OnItem
                 // TODO: 2017/11/29  如下怎么实现还是没理解
                 if (currentRadioButton == ServerConfig.RB_CAPTURE_PHOTO) {
                     if (getIsSelectedAt(position)) {
-                        int mode = ThemeManager.getInstance().getTheme();
+                        int bydTheme = getResources().getConfiguration().byd_theme;
+                        if (bydTheme == 1) {
+                            view.setBackgroundColor(Color.parseColor("#1CC9FE"));
+                        } else if (bydTheme == 2) {
+                            view.setBackgroundColor(Color.parseColor("#fb8218"));
+                        } else if (bydTheme == 101) {
+                            view.setBackgroundColor(Color.parseColor("#00ebff"));
+                        } else if (bydTheme == 102) {
+                            view.setBackgroundColor(Color.parseColor("#ff0000"));
+                        }
+                        /*int mode = ThemeManager.getInstance().getTheme();
                         if (mode == Theme.SPORT) {
                             view.setBackgroundColor(Color.parseColor("#fb8218"));
                         } else {
                             view.setBackgroundColor(Color.parseColor("#1CC9FE"));
-                        }
+                        }*/
                     } else {
                         view.setBackgroundColor(Color.TRANSPARENT);
                     }
@@ -1058,14 +1009,28 @@ public class FragmentPlaybackList extends Fragment implements AdapterView.OnItem
                         }
                     }
                     if (getIsClickedAt(position)) {
-                        int mode = ThemeManager.getInstance().getTheme();
+                        int bydTheme = getResources().getConfiguration().byd_theme;
+                        if (bydTheme == 1) {
+                            nameView.setTextColor(Color.parseColor("#1CC9FE"));
+                            timeView.setTextColor(Color.parseColor("#1CC9FE"));
+                        } else if (bydTheme == 2) {
+                            nameView.setTextColor(Color.parseColor("#fb8218"));
+                            timeView.setTextColor(Color.parseColor("#fb8218"));
+                        } else if (bydTheme == 101) {
+                            nameView.setTextColor(Color.parseColor("#00ebff"));
+                            timeView.setTextColor(Color.parseColor("#00ebff"));
+                        } else if (bydTheme == 102) {
+                            nameView.setTextColor(Color.parseColor("#ff0000"));
+                            timeView.setTextColor(Color.parseColor("#ff0000"));
+                        }
+                        /*int mode = ThemeManager.getInstance().getTheme();
                         if (mode == Theme.SPORT) {
                             nameView.setTextColor(Color.parseColor("#fb8218"));
                             timeView.setTextColor(Color.parseColor("#fb8218"));
                         } else {
                             nameView.setTextColor(Color.parseColor("#1CC9FE"));
                             timeView.setTextColor(Color.parseColor("#1CC9FE"));
-                        }
+                        }*/
                         playView.setVisibility(View.VISIBLE);
                     }
                 }
@@ -1736,6 +1701,86 @@ public class FragmentPlaybackList extends Fragment implements AdapterView.OnItem
             for (int i = 0; i < testRadioGroup.getChildCount(); i++) {
                 testRadioGroup.getChildAt(i).setEnabled(true);
             }
+        }
+    }
+
+    private void changeSkin(int bydTheme) {
+        if (bydTheme == 1) {
+            //经济模式
+            rbRecordvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_recordvideo_selector),
+                    null, null, null);
+            rbLockvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_lockvideo_selector),
+                    null, null, null);
+            rbCapturephoto.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_images_selector),
+                    null, null, null);
+            btnCancel.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_cancel_selector),
+                    null, null, null);
+            btnExport.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_export_selector),
+                    null, null, null);
+            btnDelete.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_delete_selector),
+                    null, null, null);
+            btnShare.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_share_selector),
+                    null, null, null);
+            btnSelectall.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_selectall_selector),
+                    null, null, null);
+            tvEditNav.setLight(getResources().getColor(R.color.lightone), 22);
+        } else if (bydTheme == 2) {
+            //运动模式
+            rbRecordvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_recordvideo_selector_sport),
+                    null, null, null);
+            rbLockvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_lockvideo_selector_sport),
+                    null, null, null);
+            rbCapturephoto.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_images_selector_sport),
+                    null, null, null);
+            btnCancel.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_cancel_selector_sport),
+                    null, null, null);
+            btnExport.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_export_selector_sport),
+                    null, null, null);
+            btnDelete.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_delete_selector_sport),
+                    null, null, null);
+            btnShare.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_share_selector_sport),
+                    null, null, null);
+            btnSelectall.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_selectall_selector_sport),
+                    null, null, null);
+            tvEditNav.setLight(getResources().getColor(R.color.sport_color), 22);
+        } else if (bydTheme == 101) {
+            //hadeco模式
+            rbRecordvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_recordvideo_selector_hadeco),
+                    null, null, null);
+            rbLockvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_lockvideo_selector_hadeco),
+                    null, null, null);
+            rbCapturephoto.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_images_selector_hadeco),
+                    null, null, null);
+            btnCancel.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_cancel_selector_hadeco),
+                    null, null, null);
+            btnExport.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_export_selector_hadeco),
+                    null, null, null);
+            btnDelete.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_delete_selector_hadeco),
+                    null, null, null);
+            btnShare.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_share_selector_hadeco),
+                    null, null, null);
+            btnSelectall.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_selectall_selector_hadeco),
+                    null, null, null);
+            tvEditNav.setLight(getResources().getColor(R.color.lightone), 22);
+        } else if (bydTheme == 102) {
+            //had运动模式
+            rbRecordvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_recordvideo_selector_hadsport),
+                    null, null, null);
+            rbLockvideo.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_lockvideo_selector_hadsport),
+                    null, null, null);
+            rbCapturephoto.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_pl_images_selector_hadsport),
+                    null, null, null);
+            btnCancel.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_cancel_selector_hadsport),
+                    null, null, null);
+            btnExport.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_export_selector_hadsport),
+                    null, null, null);
+            btnDelete.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_delete_selector_hadsport),
+                    null, null, null);
+            btnShare.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_share_selector_hadsport),
+                    null, null, null);
+            btnSelectall.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(R.drawable.btn_edit_selectall_selector_hadsport),
+                    null, null, null);
+            tvEditNav.setLight(getResources().getColor(R.color.hadsport_color), 22);
         }
     }
 }

@@ -5,8 +5,6 @@ package com.byd.vtdr.widget;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.AttributeSet;
-import android.util.Log;
-
 
 import com.byd.vtdr.R;
 /**#
@@ -45,9 +43,16 @@ public class ThemeLightButton extends LightButton implements ITheme {
 				if(theme == Theme.NORMAL){
 					setLight(getResources().getColor(R.color.normal_color), 10);//设置发光的颜色以及半径
 					colorStateList = getResources().getColorStateList(R.color.press_selector_text);//点击时候与未点击时候的颜色
-				}else{
+				} else if (theme == Theme.SPORT) {
 					setLight(getResources().getColor(R.color.sport_color), 10);
 					colorStateList = getResources().getColorStateList(R.color.press_selector_text_sport);
+				} else if (theme == Theme.HAD_NORMAL) {
+					setLight(getResources().getColor(R.color.lightone), 10);
+					colorStateList = getResources().getColorStateList(R.color.check_selector_hadnormal);
+				} else {
+					setLight(getResources().getColor(R.color.hadsport_color), 8);
+//					colorStateList = getResources().getColorStateList(R.color.check_selector_hadsport);
+					colorStateList = getResources().getColorStateList(R.color.check_selector_hadnormal);
 				}
 			}
 			setTextColor(colorStateList);//设置文本的颜色

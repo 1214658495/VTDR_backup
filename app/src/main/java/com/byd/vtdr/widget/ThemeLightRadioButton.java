@@ -39,12 +39,19 @@ public class ThemeLightRadioButton extends LightRadioButton implements ITheme {
 	
 //方法二
 		ColorStateList colorStateList;
-		if(theme == Theme.NORMAL){
+		if (theme == Theme.NORMAL) {
 			setLight(getResources().getColor(R.color.lightone), 30);
 			colorStateList = getResources().getColorStateList(R.color.check_selector_normal);
-		}else{
+		} else if (theme == Theme.SPORT) {
 			setLight(getResources().getColor(R.color.sport_color), 12);
 			colorStateList = getResources().getColorStateList(R.color.check_selector_sport);
+		} else if (theme == Theme.HAD_NORMAL) {
+			setLight(getResources().getColor(R.color.lightone), 30);
+			colorStateList = getResources().getColorStateList(R.color.check_selector_hadnormal);
+		} else {
+			setLight(getResources().getColor(R.color.hadsport_color), 8);
+//			colorStateList = getResources().getColorStateList(R.color.check_selector_hadsport);
+			colorStateList = getResources().getColorStateList(R.color.check_selector_hadnormal);
 		}
 		setTextColor(colorStateList);
 	}

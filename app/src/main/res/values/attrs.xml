@@ -224,6 +224,9 @@
         <attr name="text_color_sport" format="reference" />
         <attr name="background" format="reference" />
         <attr name="src" format="reference" />
+
+        <attr name="hadnormal" format="reference" />
+        <attr name="hadsport" format="reference" />
     </declare-styleable>
 
 </resources>

@@ -1,21 +1,15 @@
 package com.byd.vtdr;
 
 import android.app.Application;
-import android.hardware.bydauto.energy.AbsBYDAutoEnergyListener;
+import android.content.res.Configuration;
 import android.hardware.bydauto.energy.BYDAutoEnergyDevice;
-import android.os.Handler;
-import android.os.Message;
 
 import com.byd.vtdr.widget.Theme;
 import com.byd.vtdr.widget.ThemeManager;
 import com.squareup.leakcanary.RefWatcher;
 
-import org.greenrobot.eventbus.EventBus;
-
 import skin.support.SkinCompatManager;
 import skin.support.constraint.app.SkinConstraintViewInflater;
-
-import static android.hardware.bydauto.energy.BYDAutoEnergyDevice.ENERGY_OPERATION_SPORT;
 
 /**
  * Created by ximsfei on 2017/1/10.
@@ -29,39 +23,6 @@ public class MyApplication extends Application {
     private RemoteCam mRemoteCam;
     public boolean isRemoteCreate;
     private RefWatcher refWatcher;
-
-    private Handler modelChange = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            // TODO Auto-generated method stub
-            super.handleMessage(msg);
-            if (msg.what == ENERGY_OPERATION_SPORT) {
-                themeManager.updateTheme(Theme.SPORT);
-                SkinCompatManager.getInstance().loadSkin("sport", null, SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
-                EventBus.getDefault().post(new MessageEvent());
-            } else {
-                themeManager.updateTheme(Theme.NORMAL);
-                SkinCompatManager.getInstance().restoreDefaultTheme();
-                EventBus.getDefault().post(new MessageEvent());
-            }
-        }
-    };
-
-    AbsBYDAutoEnergyListener absBYDAutoEnergyListener = new AbsBYDAutoEnergyListener() {
-        @Override
-        public void onOperationModeChanged(int type) {
-            // TODO Auto-generated method stub
-            super.onOperationModeChanged(type);
-            modelChange.sendEmptyMessage(type);
-        }
-
-        @Override
-        public void onRoadSurfaceChanged(int type) {
-            super.onRoadSurfaceChanged(type);
-            modelChange.sendEmptyMessage(type);
-        }
-    };
-    private int mode;
 
     @Override
     public void onCreate() {
@@ -80,8 +41,8 @@ public class MyApplication extends Application {
 //        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         themeManager = ThemeManager.getInstance();
-
-        //如下为运动模式功能开启代码
+        initView();
+     /*   //如下为运动模式功能开启代码
         mBYDAutoEnergyDevice = BYDAutoEnergyDevice.getInstance(getApplicationContext());
         mBYDAutoEnergyDevice.registerListener(absBYDAutoEnergyListener);
         mode = mBYDAutoEnergyDevice.getOperationMode();
@@ -95,10 +56,16 @@ public class MyApplication extends Application {
             SkinCompatManager.getInstance().restoreDefaultTheme();
         }
 
+        */
         mRemoteCam = new RemoteCam(this);
 
         /*refWatcher = setupLeakCanary();*/
 
+    }
+
+    private void initView() {
+        int bydTheme = getResources().getConfiguration().byd_theme;
+        changeSkin(bydTheme);
     }
 
    /* private RefWatcher setupLeakCanary() {
@@ -131,7 +98,30 @@ public class MyApplication extends Application {
         return mRemoteCam;
     }
 
-    public int getMode() {
-        return mode;
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        int bydTheme = newConfig.byd_theme;
+        changeSkin(bydTheme);
+    }
+
+    private void changeSkin(int bydTheme) {
+        if (bydTheme == 1) {
+            //经济模式
+            themeManager.updateTheme(Theme.NORMAL);
+            SkinCompatManager.getInstance().restoreDefaultTheme();
+        } else if (bydTheme == 2) {
+            //运动模式
+            themeManager.updateTheme(Theme.SPORT);
+            SkinCompatManager.getInstance().loadSkin("sport", null, SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
+        } else if (bydTheme == 101) {
+            //运动模式
+            themeManager.updateTheme(Theme.HAD_NORMAL);
+            SkinCompatManager.getInstance().loadSkin("hadeco", null, SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
+        } else if (bydTheme == 102) {
+            //运动模式
+            themeManager.updateTheme(Theme.HAD_SPORT);
+            SkinCompatManager.getInstance().loadSkin("hadsport", null, SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
+        }
     }
 }

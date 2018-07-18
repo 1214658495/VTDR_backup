@@ -18,7 +18,10 @@ public class Theme {
 	public static final int TEXT_COLOR_BROWN = TEXT_COLOR_BLUE+1;
 	public static final int BACKGROUND = TEXT_COLOR_BROWN+1;
 	public static final int SRC = BACKGROUND + 1;
-	private static final int COUNT = SRC + 1;
+	public static final int HAD_NORMAL = SRC + 1;
+	public static final int HAD_SPORT = HAD_NORMAL + 1;
+
+	private static final int COUNT = HAD_SPORT + 1;
 
 	private int[] mThemes;
 
@@ -36,6 +39,9 @@ public class Theme {
 		mThemes[TEXT_COLOR_BROWN] = a.getResourceId(R.styleable.theme_text_color_sport, 0);
 		mThemes[BACKGROUND] = a.getResourceId(R.styleable.theme_background, 0);
 		mThemes[SRC] = a.getResourceId(R.styleable.theme_src, 0);
+
+		mThemes[HAD_NORMAL] = a.getResourceId(R.styleable.theme_hadnormal, 0);
+		mThemes[HAD_SPORT] = a.getResourceId(R.styleable.theme_hadsport, 0);
         a.recycle();
 	}
 	/** 方法名一样，参数不同，重载*/
